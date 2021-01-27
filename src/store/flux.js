@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         store: {
             personajes: null,
             planetas: null,
-            naves: null
+            naves: null,
+            propiedades: null
         },
 
 
@@ -54,7 +55,23 @@ const getState = ({ getStore, getActions, setStore }) => {
                         naves: data
                     })
                 })
-            }
+            },
+
+            getCharactersProperties: (id) => {
+                fetch(`https://www.swapi.tech/api/people/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            propiedades: data.result.properties
+                        })
+                    })
+
+            },
         },
     }
 }

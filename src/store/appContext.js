@@ -22,7 +22,7 @@ const injectContext = PassedComponent => {
 
         return (
             <Context.Provider value={state}>
-                <PassedComponent {...props} />
+                <PassedComponent {...props.children} />
             </Context.Provider>
         )
 

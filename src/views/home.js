@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { Context } from "../store/appContext";
+
 import Card from "../components/Card";
 
-const Home = props => {
-    const { store, actions } = useContext(Context);
+const Home = () => {
     return (
-            <div className='row'>
+            <div className='row home' style={{'marginTop':'300px'}}>
                 <div className='col-md-4'>
                     <Card categoria={'CHARACTERS'} href={'/characters'} src={'img/star-wars-personajes.jpg'}/>
                 </div>
@@ -13,7 +11,7 @@ const Home = props => {
                     <Card categoria={'PLANETS'} href={'/planets'} src={"img/planets.jpg"}/>
                 </div>
                 <div className='col-md-4'>
-                    <Card categoria={'STARSHIPS'} href={'/starships'} src={"http://placehold.it/900x700"}/>
+                    <Card categoria={'STARSHIPS'} href={'/starships'} src={"img/nave.jpg"}/>
                 </div>
             </div>
     )
