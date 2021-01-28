@@ -21,8 +21,8 @@ const Characters = () => {
                                 <Card 
                                 key={i} 
                                 categoria={personaje.name} 
-                                src={`https://starwars-visualguide.com/assets/img/characters/${i + 1}.jpg`}
-                                sendIndex={(e) => sendIndex(e,i+1)} />
+                                src={`https://starwars-visualguide.com/assets/img/characters/${personaje.uid}.jpg`}
+                                sendIndex={(e) => sendIndex(e,personaje.uid)} />
 
                             </div>
                         )

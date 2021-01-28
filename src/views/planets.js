@@ -22,8 +22,8 @@ const Planets = (props) => {
                             <div className='col-md-3 mb-3'>
                                 <Card key={i}
                                     categoria={planeta.name}
-                                    src={`https://starwars-visualguide.com/assets/img/planets/${i + 1}.jpg`}
-                                    sendIndex={(e) => sendIndex(e, i + 1)} />
+                                    src={`https://starwars-visualguide.com/assets/img/planets/${planeta.uid}.jpg`}
+                                    sendIndex={(e) => sendIndex(e, planeta.uid)} />
                             </div>
                         )
                     })
