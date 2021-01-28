@@ -6,12 +6,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             personajes: null,
             planetas: null,
             naves: null,
-            propiedades: null
+            propiedadesPersonajes: null,
+            propiedadesPlanetas: null,
+            propiedadesNaves: null
         },
 
 
         actions: {
-            getCharacters: () => {
+            getCharacters: (id) => {
                 fetch('https://www.swapi.tech/api/people/', {
                     method: 'GET',
                     headers: {
@@ -21,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then(resp => resp.json())
                     .then(data => {
                         setStore({
-                            personajes: data
+                            personajes: data,
                         })
                     })
 
@@ -67,7 +69,39 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then(resp => resp.json())
                     .then(data => {
                         setStore({
-                            propiedades: data.result.properties
+                            propiedadesPersonajes: data.result.properties
+                        })
+                    })
+
+            },
+
+            getPlanetsProperties: (id) => {
+                fetch(`https://www.swapi.tech/api/planets/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            propiedadesPlanetas: data.result.properties
+                        })
+                    })
+
+            },
+
+            getStarShipsProperties: (id) => {
+                fetch(`https://www.swapi.tech/api/starships/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            propiedadesNaves: data.result.properties
                         })
                     })
 

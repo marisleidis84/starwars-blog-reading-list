@@ -1,7 +1,6 @@
-
 import Card from "../components/Card";
 
-const Home = () => {
+const Home = (props) => {
     return (
             <div className='row home' style={{'marginTop':'300px'}}>
                 <div className='col-md-4'>
