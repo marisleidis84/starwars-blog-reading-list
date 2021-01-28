@@ -30,14 +30,14 @@ const Starships = () => {
 
             <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
-                    <div className="modal-content">
+                    <div className="modal-content text-white-50" style={{"backgroundColor":"black"}}>
                         <div className="modal-header">
                             <h5 className="modal-title" id="staticBackdropLabel">Informacion de {store.propiedadesNaves ? store.propiedadesNaves.name : null}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body bg-dark">
                             <p className="text-left"><strong>Model: </strong>{(store.propiedadesNaves !== null) ? store.propiedadesNaves.model : null} cm</p>
                             <p className="text-left"><strong>Starship: </strong>{store.propiedadesNaves ? store.propiedadesNaves.starship_class : null} </p>
                             <p className="text-left"><strong>Manufacturer: </strong>{store.propiedadesNaves ? store.propiedadesNaves.manufacturer : null} </p>

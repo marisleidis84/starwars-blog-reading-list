@@ -32,14 +32,14 @@ const Planets = (props) => {
 
             <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
-                    <div className="modal-content">
+                    <div className="modal-content text-white-50" style={{"backgroundColor":"black"}}>
                         <div className="modal-header">
                             <h5 className="modal-title" id="staticBackdropLabel">Informacion de {store.propiedadesPlanetas ? store.propiedadesPlanetas.name : null}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body bg-dark">
                             <p className="text-left"><strong>Diameter: </strong>{(store.propiedadesPlanetas!==null) ? store.propiedadesPlanetas.diameter : null} cm</p>
                             <p className="text-left"><strong>Rotation Periodica: </strong>{store.propiedadesPlanetas ? store.propiedadesPlanetas.rotation_period : null} </p>
                             <p className="text-left"><strong>Orbital Periodica: </strong>{store.propiedadesPlanetas ? store.propiedadesPlanetas.orbital_period : null} </p>
