@@ -1,8 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Card from "../components/Card"
 import { Context } from "../store/appContext";
 
-const Starships = () => {
+const Starships = (props) => {
     const { store, actions } = useContext(Context);
 
     const sendIndex = (e, id) => {
@@ -20,8 +20,8 @@ const Starships = () => {
                             <div className='col-md-3 mb-3'>
                                 <Card key={i}
                                     categoria={nave.name}
-                                    src={`https://starwars-visualguide.com/assets/img/starships/${i + 1}.jpg`}
-                                    sendIndex={(e) => sendIndex(e, i + 1)} />
+                                    src={`https://starwars-visualguide.com/assets/img/starships/${nave.uid}.jpg`}
+                                    sendIndex={(e) => sendIndex(e, nave.uid)} />
                             </div>
                         )
                     })
