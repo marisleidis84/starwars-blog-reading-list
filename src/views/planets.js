@@ -11,6 +11,11 @@ const Planets = (props) => {
         actions.getPlanetsProperties(id)
     }
 
+    const sendfavorites = async(e, id) => {
+        e.preventDefault(e);
+        await actions.getFavorites(id)
+    }
+
 
     return (
         <>
@@ -22,8 +27,10 @@ const Planets = (props) => {
                             <div className='col-md-3 mb-3'>
                                 <Card key={i}
                                     categoria={planeta.name}
+                                    icon={"fas fa-heart fa-2x"}
                                     src={`https://starwars-visualguide.com/assets/img/planets/${planeta.uid}.jpg`}
-                                    sendIndex={(e) => sendIndex(e, planeta.uid)} />
+                                    sendIndex={(e) => sendIndex(e, planeta.uid)} 
+                                    favorito={(e)=> sendfavorites(e, planeta.name)}/>
                             </div>
                         )
                     })

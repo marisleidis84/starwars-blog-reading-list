@@ -10,6 +10,11 @@ const Characters = () => {
         actions.getCharactersProperties(id)
     }
 
+    const sendfavorites = async(e, id) => {
+        e.preventDefault(e);
+        await actions.getFavorites(id)
+    }
+
     return (
         <>
             <div className='row'>
@@ -21,8 +26,10 @@ const Characters = () => {
                                 <Card 
                                 key={i} 
                                 categoria={personaje.name} 
+                                icon={"fas fa-heart fa-2x"}
                                 src={`https://starwars-visualguide.com/assets/img/characters/${personaje.uid}.jpg`}
-                                sendIndex={(e) => sendIndex(e,personaje.uid)} />
+                                sendIndex={(e) => sendIndex(e,personaje.uid)} 
+                                favorito={(e)=> sendfavorites(e, personaje.name)}/>
 
                             </div>
                         )

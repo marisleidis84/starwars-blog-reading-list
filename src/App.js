@@ -1,8 +1,7 @@
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import injectContext from './store/appContext';
-import About from './views/about';
 import Characters from './views/characters';
 import Home from './views/home';
 import NotFound from './views/notfound';

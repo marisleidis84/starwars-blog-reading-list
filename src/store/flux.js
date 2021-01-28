@@ -1,4 +1,3 @@
-import { data } from "jquery"
 
 const getState = ({ getStore, getActions, setStore }) => {
     return {
@@ -8,9 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             naves: null,
             propiedadesPersonajes: null,
             propiedadesPlanetas: null,
-            propiedadesNaves: null
+            propiedadesNaves: null,
+            favoritos: []
         },
-
 
         actions: {
             getCharacters: (id) => {
@@ -28,35 +27,35 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
 
             },
-            
+
             getPlanets: () => {
                 fetch('https://www.swapi.tech/api/planets/', {
                     method: 'GET',
-                    headers:{
+                    headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        planetas: data
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            planetas: data
+                        })
                     })
-                })
             },
 
             getStarShips: () => {
                 fetch('https://www.swapi.tech/api/starships/', {
                     method: 'GET',
-                    headers:{
+                    headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        naves: data
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            naves: data
+                        })
                     })
-                })
             },
 
             getCharactersProperties: (id) => {
@@ -72,7 +71,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                             propiedadesPersonajes: data.result.properties
                         })
                     })
-
             },
 
             getPlanetsProperties: (id) => {
@@ -106,6 +104,21 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
 
             },
+
+            getFavorites: (name) => {
+
+                setStore({
+                    favoritos: getStore().favoritos.includes(name) ?  getStore().favoritos : getStore().favoritos.concat(name)
+                })
+            },
+
+             getTrash: y => {
+                let newTasks = [...getStore().favoritos];
+                newTasks.splice(y, 1);
+                setStore({
+                    favoritos: newTasks
+                });
+            }
         },
     }
 }

@@ -1,29 +1,50 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
-const Navbar = () => {
-    return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
-        <div className="container">
-          <Link className="navbar-brand" to="/"><img src={'/img/dia-star-wars.jpg'}/></Link>
-          <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-            <ul>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Favorites
-                </a>
-                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-                  <a className="dropdown-item" href="full-width.html">Full Width Page</a>
-                  <a className="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                  <a className="dropdown-item" href="faq.html">FAQ</a>
-                  <a className="dropdown-item" href="404.html">404</a>
-                  <a className="dropdown-item" href="pricing.html">Pricing Table</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-      </nav>
-    )
+const Navbar = ({ props }) => {
+  const { store, actions } = useContext(Context);
+
+  const eliminar = (y) => {
+    actions.getTrash(y)
+  }
+
+
+  return (
+    <nav className="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
+      <div className="container">
+        <Link className="navbar-brand" to="/"><img src={'/img/dia-star-wars.jpg'} alt="img" /></Link>
+
+        <div className="dropdown">
+          <button className="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" style={{ 'width': '200px' }}>Favorites  <span class="badge bg-secondary">0</span></button>
+          <ul className="dropdown-menu border-0" style={{ 'width': '350px' }}>
+
+            {
+              !!store.favoritos &&
+              store.favoritos.map((favorito, i) => {
+                return (
+                  <div className='row border-0 d-flex justify-content-between ml-3' style={{ 'width': '300px' }}>
+                    <div>
+                      <li id="task" key={i} className=" border-0">{favorito}</li>
+                    </div>
+                    <div>
+                      <i className='fas fa-trash-alt mt-3' onClick={() => eliminar(i)} style={{ cursor: 'pointer' }}></i>
+                    </div>
+                  </div>
+                )
+              })
+            }
+
+          </ul>
+        </div>
+
+
+
+
+
+
+      </div>
+    </nav>
+  )
 }
 export default Navbar;

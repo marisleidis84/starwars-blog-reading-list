@@ -10,6 +10,12 @@ const Starships = (props) => {
         actions.getStarShipsProperties(id)
     }
 
+    
+    const sendfavorites = async(e, id) => {
+        e.preventDefault(e);
+        await actions.getFavorites(id)
+    }
+
     return (
         <>
             <div className='row'>
@@ -20,17 +26,20 @@ const Starships = (props) => {
                             <div className='col-md-3 mb-3'>
                                 <Card key={i}
                                     categoria={nave.name}
+                                    icon={"fas fa-heart fa-2x"}
                                     src={`https://starwars-visualguide.com/assets/img/starships/${nave.uid}.jpg`}
-                                    sendIndex={(e) => sendIndex(e, nave.uid)} />
+                                    sendIndex={(e) => sendIndex(e, nave.uid)}
+                                    favorito={(e)=> sendfavorites(e, nave.name)}
+                                     />
                             </div>
                         )
                     })
                 }
             </div>
 
-            <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
-                    <div className="modal-content text-white-50" style={{"backgroundColor":"black"}}>
+                    <div className="modal-content text-white-50" style={{ "backgroundColor": "black" }}>
                         <div className="modal-header">
                             <h5 className="modal-title" id="staticBackdropLabel">Informacion de {store.propiedadesNaves ? store.propiedadesNaves.name : null}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
