@@ -16,7 +16,7 @@ const Navbar = ({ props }) => {
         <Link className="navbar-brand" to="/"><img src={'/img/dia-star-wars.jpg'} alt="img" /></Link>
 
         <div className="dropdown">
-          <button className="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" style={{ 'width': '200px' }}>Favorites  <span class="badge bg-secondary">0</span></button>
+          <button className="btn dropdown-toggle " type="button" data-toggle="dropdown" style={{ 'width': '200px', 'backgroundColor':'#FF9E3B' }}>Favorites  <span class="badge bg-secondary">0</span></button>
           <ul className="dropdown-menu border-0" style={{ 'width': '350px' }}>
 
             {
