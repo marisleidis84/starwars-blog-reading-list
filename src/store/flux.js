@@ -118,7 +118,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 let newTasks = [...getStore().favoritos];
                 newTasks.splice(y, 1);
                 setStore({
-                    favoritos: newTasks
+                    favoritos: newTasks,
+                    contador: getStore().favoritos.length -1
                 });
             },
 
