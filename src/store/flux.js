@@ -8,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             propiedadesPersonajes: null,
             propiedadesPlanetas: null,
             propiedadesNaves: null,
-            favoritos: []
+            favoritos: [],
+            contador: null
         },
 
         actions: {
@@ -108,16 +109,22 @@ const getState = ({ getStore, getActions, setStore }) => {
             getFavorites: (name) => {
 
                 setStore({
-                    favoritos: getStore().favoritos.includes(name) ?  getStore().favoritos : getStore().favoritos.concat(name)
+                    favoritos: getStore().favoritos.includes(name) ? getStore().favoritos : getStore().favoritos.concat(name),
+                    contador:  getStore().favoritos.length +1
                 })
             },
 
-             getTrash: y => {
+            getTrash: y => {
                 let newTasks = [...getStore().favoritos];
                 newTasks.splice(y, 1);
                 setStore({
                     favoritos: newTasks
                 });
+            },
+
+            getCounter: () => {
+                setStore({
+                })
             }
         },
     }
