@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             propiedadesPlanetas: null,
             propiedadesNaves: null,
             favoritos: [],
-            contador: null
+            contador: 0
         },
 
         actions: {
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 setStore({
                     favoritos: getStore().favoritos.includes(name) ? getStore().favoritos : getStore().favoritos.concat(name),
-                    contador:  getStore().favoritos.length +1
+                    contador:  getStore().favoritos.includes(name) ? getStore().favoritos.length : getStore().favoritos.length + 1
                 })
             },
 
